@@ -13,5 +13,22 @@
 <input type="text" ng-model="config.shoreman_app" />
 <label>SHOREMAN_CMD</label>
 <input type="text" ng-model="config.shoreman_cmd" />
+<table>
+  <tr>
+    <th>Key</th>
+    <th>Value</th>
+  </tr>
+  <tr ng-repeat="(v, k) in config">
+    <td>{{k}}</th>
+    <td>{{v}}</th>
+    <td><button class="btn btn-default" ng-click="remove(k)">Remove</button></td>
+  </tr>
+</table>
+<hr />
+<label>Key</label>
+<input type="text" ng-model="env.key" />
+<label>Value</label>
+<input type="text" ng-model="env.value" />
+<button class="btn btn-default" ng-click="add(env)">Add Env</button>
 
 <button class="btn btn-default" ng-click="save()">Save</button>
