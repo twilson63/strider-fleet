@@ -1,6 +1,6 @@
 {
   "name": "strider-fleet",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Strider Plugin to deploy to a custom fleet CD Setup",
   "main": "index.js",
   "scripts": {
