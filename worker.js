@@ -4,13 +4,12 @@ function shellCommand(config) {
   console.log(config);
   var command = _.template([
       "fleet remote add default --hub=<%= env.hub %> --secret=<%= env.secret %>",
-      "<% _(env).each(function(value, key) { %>",
-      "fleet remote set default --env.<%= key.toUpperCase() %>=<%= value %>",
-      "<% }); %>",
       "fleet deploy",
       "fleet exec --drone=* -- npm install --production",
-      "fleet exec --drone=* -- forever stop <%= env.app %>",
-      "fleet exec --drone=* -- forever start -l /var/log/<%= env.app %>.log" +
+      "fleet exec --drone=* -- forever stop <%= env.app.split('@')[0] %>",
+      "fleet exec --drone=* <% _(env).each(function(value, key) { %> " +
+      "--env.<%= key.toUpperCase() %>=<%= value %>" +
+      "<% }); %> -- forever start -l /var/log/<%= env.app.split('@')[0] %>.log" +
       " --uid=<%= env.app.split('@')[0] %> -a -c shoreman <%= env.script %>"
     ].join('\n'))({ env: config })
   return {
