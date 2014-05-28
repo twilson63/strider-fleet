@@ -1,0 +1,24 @@
+{
+  "name": "strider-fleet",
+  "version": "0.0.0",
+  "description": "A Strider Plugin to deploy to a custom fleet CD Setup",
+  "main": "index.js",
+  "scripts": {
+    "test": "jshint && tap **/*_test.js"
+  },
+  "author": "Tom",
+  "license": "MIT",
+  "strider": {
+    "id": "fleet",
+    "type": "job",
+    "title": "Fleet",
+    "worker": "worker.js",
+    "webapp": "webapp.js",
+    "config": {
+      "controller": "FleetCtrl"
+    }
+  },
+  "dependencies": {
+    "underscore": "^1.6.0"
+  }
+}
