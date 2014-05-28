@@ -1,34 +1,29 @@
-<h1>Fleet Panel</h1>
-<label>Hub</label>
-<input ng-model="config.hub" />
-<label>Secret</label>
-<input type="password" ng-model="config.secret" />
-<label>App</label>
-<input type="text" ng-model="config.app" />
-<label>Script</label>
-<input type="text" ng-model="config.script" />
-<label>SEAPORT</label>
-<input type="text" ng-model="config.seaport" />
-<label>SHOREMAN_APP</label>
-<input type="text" ng-model="config.shoreman_app" />
-<label>SHOREMAN_CMD</label>
-<input type="text" ng-model="config.shoreman_cmd" />
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Value</th>
-  </tr>
-  <tr ng-repeat="(v, k) in config">
-    <td>{{k}}</th>
-    <td>{{v}}</th>
-    <td><button class="btn btn-default" ng-click="remove(k)">Remove</button></td>
-  </tr>
-</table>
-<hr />
-<label>Key</label>
-<input type="text" ng-model="env.key" />
-<label>Value</label>
-<input type="text" ng-model="env.value" />
-<button class="btn btn-default" ng-click="add(env)">Add Env</button>
-
-<button class="btn btn-default" ng-click="save()">Save</button>
+<div id="env" class="tab-pane well">
+  <fieldset>
+    <legend>Fleet Variables</legend>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="(key, value) in config">
+          <td>[[ key ]]</td>
+          <td><input ng-model="value"></td>
+          <td class="remove">
+            <span class="clickable" ng-click="del(key)">
+              <i class="icon-remove" alt="remove"></i>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td><input ng-model="newkey" placeholder="New Key"></td>
+          <td><input ng-model="newvalue" placeholder="New Value"></td>
+          <td><button ng-click="add()" class="btn btn-success">Add</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </fieldset>
+</div>
